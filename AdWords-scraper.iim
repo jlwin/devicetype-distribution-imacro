@@ -1,4 +1,4 @@
-VERSION BUILD=8890130 RECORDER=FX
+VERSION BUILD=9030808 RECORDER=FX
 
 TAB T=1
 SET !DATASOURCE keywords.csv
@@ -7,12 +7,12 @@ SET !DATASOURCE_LINE {{!loop}}
 
 SET !TIMEOUT_STEP 10
 SET !VAR8 EVAL("var randomNumber=Math.floor(Math.random()+0.2); randomNumber;")
-SET !VAR9 EVAL("var randomNumber=Math.floor(Math.random()+6); randomNumber;")
+SET !VAR9 EVAL("var randomNumber=Math.floor(Math.random()+7); randomNumber;")
 
 'Keyword aus DataSource pasten und Suchvolumen-abrufen-Button klicken
-TAG POS=1 TYPE=TEXTAREA ATTR=ID:gwt-debug-upload-text-box CONTENT={{!COL1}}
+TAG POS=3 TYPE=TEXTAREA ATTR=ID:gwt-debug-upload-text-box CONTENT={{!COL1}}
 WAIT SECONDS={{!VAR8}}
-TAG POS=20 TYPE=DIV ATTR=TXT:Suchvolumen<SP>abrufen
+TAG POS=20 TYPE=DIV ATTR=TXT:Suchvolumenabrufen
 WAIT SECONDS={{!VAR9}}
 
 
@@ -25,30 +25,30 @@ SET !EXTRACT NULL
 
 
 'Ersten Datensatz abfragen Var1
-TAG POS=1 TYPE=TEXT ATTR=CLASS:legendLabel EXTRACT=TXT
+TAG POS=1 TYPE=TD ATTR=CLASS:aplos-legend-label-cell EXTRACT=TXT
 SET !VAR1 {{!EXTRACT}}
 SET !EXTRACT NULL
-TAG POS=1 TYPE=TEXT ATTR=CLASS:legendValue EXTRACT=TXT
+TAG POS=1 TYPE=TD ATTR=CLASS:aplos-legend-value-cell EXTRACT=TXT
 SET Var1Separated EVAL("\"{{!EXTRACT}}\".replace(/ \\(/g, ';');")
 SET Var1Processed EVAL("\"{{Var1Separated}}\".replace(/\\)/g, '');")
 ADD !VAR1 ;{{Var1Processed}}
 SET !EXTRACT NULL
 
 'Zweiten Datensatz abfragen Var2
-TAG POS=2 TYPE=TEXT ATTR=CLASS:legendLabel EXTRACT=TXT
+TAG POS=2 TYPE=TD ATTR=CLASS:aplos-legend-label-cell EXTRACT=TXT
 SET !VAR2 {{!EXTRACT}}
 SET !EXTRACT NULL
-TAG POS=2 TYPE=TEXT ATTR=CLASS:legendValue EXTRACT=TXT
+TAG POS=2 TYPE=TD ATTR=CLASS:aplos-legend-value-cell EXTRACT=TXT
 SET Var2Separated EVAL("\"{{!EXTRACT}}\".replace(/ \\(/g, ';');")
 SET Var2Processed EVAL("\"{{Var2Separated}}\".replace(/\\)/g, '');")
 ADD !VAR2 ;{{Var2Processed}}
 SET !EXTRACT NULL
 
 'Dritten Datensatz abfragen Var3
-TAG POS=3 TYPE=TEXT ATTR=CLASS:legendLabel EXTRACT=TXT
+TAG POS=3 TYPE=TD ATTR=CLASS:aplos-legend-label-cell EXTRACT=TXT
 SET !VAR3 {{!EXTRACT}}
 SET !EXTRACT NULL
-TAG POS=3 TYPE=TEXT ATTR=CLASS:legendValue EXTRACT=TXT
+TAG POS=3 TYPE=TD ATTR=CLASS:aplos-legend-value-cell EXTRACT=TXT
 SET Var3Separated EVAL("\"{{!EXTRACT}}\".replace(/ \\(/g, ';');")
 SET Var3Processed EVAL("\"{{Var3Separated}}\".replace(/\\)/g, '');")
 ADD !VAR3 ;{{Var3Processed}}
